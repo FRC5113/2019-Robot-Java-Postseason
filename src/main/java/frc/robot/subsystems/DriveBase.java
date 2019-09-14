@@ -66,6 +66,14 @@ public class DriveBase extends Subsystem {
     mecDrive.driveCartesian(0, 0, 0);
   }
 
+  public void slowSpeed(double maxSpeed) {
+    mecDrive.setMaxOutput(maxSpeed);
+  }
+
+  public void normalSpeed() {
+    mecDrive.setMaxOutput(1);
+  }
+
   @Override
   public void initDefaultCommand() {
     setDefaultCommand(new TeleopDriveNormal());

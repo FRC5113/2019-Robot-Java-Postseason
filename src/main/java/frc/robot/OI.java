@@ -9,6 +9,7 @@ import frc.robot.commands.ToggleClimbPistons;
 import frc.robot.commands.ToggleCompressor;
 import frc.robot.commands.ToggleHatchPanelBar;
 import frc.robot.commands.ToggleHatchPanelClamp;
+import frc.robot.commands.TeleopReduceSpeed;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,13 +23,14 @@ public class OI {
     /*
      * Technically we should use .close() on all of these when they are no longer
      * being used, but these are used until the robot reboots, so for sake of
-     * laziness, I am going to leave thewm as is.
+     * laziness, I am going to leave them as is.
      */
     final JoystickButton compressorButton = new JoystickButton(mainGamepad, RobotMap.compressorButton);
     final JoystickButton pivotToggleButton = new JoystickButton(secondaryGamepad, RobotMap.pivotToggleButton);
     final JoystickButton clampButton = new JoystickButton(secondaryGamepad, RobotMap.clampButton);
     final JoystickButton barButton = new JoystickButton(secondaryGamepad, RobotMap.barButton);
     final JoystickButton climbToggleButton = new JoystickButton(mainGamepad, RobotMap.climbToggleButton);
+    final JoystickButton driveSlowButton = new JoystickButton(mainGamepad, RobotMap.driveSlow);
     final POVButton autonButton = new POVButton(mainGamepad, 0);
     // Realistically we should either remove the implementations above and move to
     // something more like CargoControl.java, or we should convert the cargo
@@ -39,6 +41,7 @@ public class OI {
     clampButton.whenPressed(new ToggleHatchPanelClamp());
     barButton.whenPressed(new ToggleHatchPanelBar());
     climbToggleButton.whenPressed(new ToggleClimbPistons());
+    driveSlowButton.whileHeld(new TeleopReduceSpeed());
     autonButton.whileHeld(new TestAuton());
   }
 
