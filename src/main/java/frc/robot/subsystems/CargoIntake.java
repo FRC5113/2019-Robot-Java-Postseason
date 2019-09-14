@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.CargoControl;
 
 public class CargoIntake extends Subsystem {
   private WPI_TalonSRX intakeMotor = new WPI_TalonSRX(RobotMap.intakeMotorCAN);
@@ -17,8 +16,11 @@ public class CargoIntake extends Subsystem {
     pivot.set(Value.kForward); // Initialized as kForward because that is its starting configuration.
   }
 
-  public void intakeSpin(double speed) {
-    intakeMotor.set(speed);
+  /**
+   * True for intake, false for outtake.
+   */
+  public void intakeSpinDirection(boolean dir) {
+    intakeMotor.set(dir ? RobotMap.intakeSpeed : RobotMap.outputSpeed);
   }
 
   public void intakeOff() {
@@ -35,6 +37,6 @@ public class CargoIntake extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new CargoControl());
+    // This subsystem has no default command.
   }
 }

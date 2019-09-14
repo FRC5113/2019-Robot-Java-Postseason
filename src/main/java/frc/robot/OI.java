@@ -9,6 +9,7 @@ import frc.robot.commands.ToggleClimbPistons;
 import frc.robot.commands.ToggleCompressor;
 import frc.robot.commands.ToggleHatchPanelBar;
 import frc.robot.commands.ToggleHatchPanelClamp;
+import frc.robot.commands.CargoControl;
 import frc.robot.commands.TeleopReduceSpeed;
 
 /**
@@ -31,6 +32,8 @@ public class OI {
     final JoystickButton barButton = new JoystickButton(secondaryGamepad, RobotMap.barButton);
     final JoystickButton climbToggleButton = new JoystickButton(mainGamepad, RobotMap.climbToggleButton);
     final JoystickButton driveSlowButton = new JoystickButton(mainGamepad, RobotMap.driveSlow);
+    final JoystickButton cargoInButton = new JoystickButton(secondaryGamepad, RobotMap.cargoIntakeButton);
+    final JoystickButton cargoOutButton = new JoystickButton(secondaryGamepad, RobotMap.cargoOutputButton);
     final POVButton autonButton = new POVButton(mainGamepad, 0);
     // Realistically we should either remove the implementations above and move to
     // something more like CargoControl.java, or we should convert the cargo
@@ -42,6 +45,8 @@ public class OI {
     barButton.whenPressed(new ToggleHatchPanelBar());
     climbToggleButton.whenPressed(new ToggleClimbPistons());
     driveSlowButton.whileHeld(new TeleopReduceSpeed());
+    cargoInButton.whileHeld(new CargoControl(true));
+    cargoOutButton.whileHeld(new CargoControl(false));
     autonButton.whileHeld(new TestAuton());
   }
 
@@ -57,14 +62,6 @@ public class OI {
     return mainGamepad.getRawAxis(RobotMap.driveZStick);
   }
 
-  public boolean getCargoIntake() {
-    return secondaryGamepad.getRawButton(RobotMap.cargoIntakeButton);
-  }
-
-  public boolean getCargoOutput() {
-    return secondaryGamepad.getRawButton(RobotMap.cargoOutputButton);
-  }
-
   public boolean getElevatorUp() {
     return mainGamepad.getRawButton(RobotMap.elevatorUpButton);
   }
@@ -76,4 +73,5 @@ public class OI {
   public boolean getAutonForwardButton() {
     return mainGamepad.getRawButton(RobotMap.autonForwardButton);
   }
+
 }

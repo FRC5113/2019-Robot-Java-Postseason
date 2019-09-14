@@ -5,20 +5,20 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class CargoControl extends Command {
-  public CargoControl() {
+  boolean direction;
+
+  /**
+   * True for intake, false for outtake.
+   */
+  public CargoControl(boolean dir) {
     requires(Robot.cargoIntake);
+    direction = dir;
   }
 
-  // Called repeatedly when this Command is scheduled to run
+  // Called once when this Command is scheduled to run
   @Override
-  protected void execute() {
-    if (Robot.oi.getCargoIntake()) {
-      Robot.cargoIntake.intakeSpin(-RobotMap.intakeSpeed);
-    } else if (Robot.oi.getCargoOutput()) {
-      Robot.cargoIntake.intakeSpin(RobotMap.outputSpeed);
-    } else {
-      Robot.cargoIntake.intakeOff();
-    }
+  protected void initialize() {
+    Robot.cargoIntake.intakeSpinDirection(direction);
   }
 
   // Make this return true when this Command no longer needs to run execute()

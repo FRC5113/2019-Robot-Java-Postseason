@@ -1,7 +1,5 @@
 package frc.robot;
 
-import org.graalvm.compiler.nodes.PiArrayNode.Placeholder;
-
 /**
  * The RobotMap is a list of numeric or boolean variables used in any class. Any
  * port numbers, speed modifiers, axis or button ids, or anything else user
@@ -38,7 +36,7 @@ public class RobotMap {
   public static final int cargoIntakeButton = 1;
   public static final int cargoOutputButton = 2;
   public static final int pivotToggleButton = 6;
-  public static final double intakeSpeed = 0.4;
+  public static final double intakeSpeed = -0.4;
   public static final double outputSpeed = 0.6;
 
   // Hatch Panel Intake
