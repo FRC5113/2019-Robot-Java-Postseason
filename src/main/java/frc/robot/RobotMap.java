@@ -1,5 +1,7 @@
 package frc.robot;
 
+import org.graalvm.compiler.nodes.PiArrayNode.Placeholder;
+
 /**
  * The RobotMap is a list of numeric or boolean variables used in any class. Any
  * port numbers, speed modifiers, axis or button ids, or anything else user
@@ -10,7 +12,7 @@ package frc.robot;
  * makes changing settings quicker and easier, and significantly reduces the
  * number of magic numbers floating around.
  * For example to map the left and right motors, you could define the following
- * variables to use with your drivetrain subsystem. 
+ * variables to use with your drivetrain subsystem.
  * public static int leftMotor = 1;
  * public static int rightMotor = 2;
  */
@@ -25,6 +27,9 @@ public class RobotMap {
   public static final int driveXStick = 0; // Forward/back
   public static final int driveYStick = 1; // Left/right strafe
   public static final int driveZStick = 4; // Left/right rotate
+
+  public static final int driveSlow = 99; // TODO: PLACEHOLDER
+  public static final double slowSpeed = 0.75;
 
   // Cargo Intake
   public static final int intakeMotorCAN = 7;
