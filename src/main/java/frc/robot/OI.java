@@ -10,6 +10,7 @@ import frc.robot.commands.ToggleCompressor;
 import frc.robot.commands.ToggleHatchPanelBar;
 import frc.robot.commands.ToggleHatchPanelClamp;
 import frc.robot.commands.CargoControl;
+import frc.robot.commands.ElevatorControl;
 import frc.robot.commands.TeleopReduceSpeed;
 
 /**
@@ -34,19 +35,20 @@ public class OI {
     final JoystickButton driveSlowButton = new JoystickButton(mainGamepad, RobotMap.driveSlow);
     final JoystickButton cargoInButton = new JoystickButton(secondaryGamepad, RobotMap.cargoIntakeButton);
     final JoystickButton cargoOutButton = new JoystickButton(secondaryGamepad, RobotMap.cargoOutputButton);
+    final JoystickButton elevatorUpButton = new JoystickButton(secondaryGamepad, RobotMap.elevatorUpButton);
+    final JoystickButton elevatorDownButton = new JoystickButton(secondaryGamepad, RobotMap.elevatorDownButton);
     final POVButton autonButton = new POVButton(mainGamepad, 0);
-    // Realistically we should either remove the implementations above and move to
-    // something more like CargoControl.java, or we should convert the cargo
-    // controlls to work with JoystickButton commands.
 
     compressorButton.whenPressed(new ToggleCompressor());
     pivotToggleButton.whenPressed(new ToggleCargoPivot());
     clampButton.whenPressed(new ToggleHatchPanelClamp());
     barButton.whenPressed(new ToggleHatchPanelBar());
     climbToggleButton.whenPressed(new ToggleClimbPistons());
-    driveSlowButton.whileHeld(new TeleopReduceSpeed());
+    driveSlowButton.toggleWhenPressed(new TeleopReduceSpeed());
     cargoInButton.whileHeld(new CargoControl(true));
     cargoOutButton.whileHeld(new CargoControl(false));
+    elevatorUpButton.whileHeld(new ElevatorControl(true));
+    elevatorDownButton.whileHeld(new ElevatorControl(false));
     autonButton.whileHeld(new TestAuton());
   }
 
@@ -60,14 +62,6 @@ public class OI {
 
   public double getDriveZ() {
     return mainGamepad.getRawAxis(RobotMap.driveZStick);
-  }
-
-  public boolean getElevatorUp() {
-    return mainGamepad.getRawButton(RobotMap.elevatorUpButton);
-  }
-
-  public boolean getElevatorDown() {
-    return mainGamepad.getRawButton(RobotMap.elevatorDownButton);
   }
 
   public boolean getAutonForwardButton() {

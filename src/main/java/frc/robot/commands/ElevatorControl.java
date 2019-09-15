@@ -5,20 +5,20 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ElevatorControl extends Command {
-  public ElevatorControl() {
+  boolean direction;
+
+  /**
+   * True for up, false for down.
+   */
+  public ElevatorControl(boolean dir) {
     requires(Robot.climber);
+    direction = dir;
   }
 
-  // Called repeatedly when this Command is scheduled to run
+  // Called once when this Command is scheduled to run
   @Override
-  protected void execute() {
-    if (Robot.oi.getElevatorUp()) {
-      Robot.climber.elevatorSpeed(RobotMap.elevatorSpeed);
-    } else if (Robot.oi.getElevatorDown()) {
-      Robot.climber.elevatorSpeed(-RobotMap.elevatorSpeed);
-    } else {
-      Robot.climber.elevatorOff();
-    }
+  protected void initialize() {
+    Robot.climber.elevatorDirection(direction);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -31,6 +31,6 @@ public class ElevatorControl extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.climber.elevatorOff();
+    Robot.cargoIntake.intakeOff();
   }
 }

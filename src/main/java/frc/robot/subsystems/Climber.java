@@ -16,11 +16,14 @@ public class Climber extends Subsystem {
   public Climber() {
     elevatorMotor.setNeutralMode(NeutralMode.Brake);
     elevatorMotor.setInverted(true);
-    climb.set(Value.kReverse); // Initialized as kReverse because that is its starting configuration.
+    climb.set(Value.kReverse); // Initialized as kReverse because that is it's starting configuration.
   }
 
-  public void elevatorSpeed(double speed) {
-    elevatorMotor.set(speed);
+  /**
+   * True for up, false for down.
+   */
+  public void elevatorDirection(boolean dir) {
+    elevatorMotor.set(RobotMap.elevatorSpeed * (dir ? 1 : -1));
   }
 
   public void elevatorOff() {
@@ -37,6 +40,6 @@ public class Climber extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new ElevatorControl());
+    // This subsystem has no default command
   }
 }
