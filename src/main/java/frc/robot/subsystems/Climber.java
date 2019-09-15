@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.ElevatorControl;
 
 public class Climber extends Subsystem {
   private WPI_TalonSRX elevatorMotor = new WPI_TalonSRX(RobotMap.elevatorMotorCAN);

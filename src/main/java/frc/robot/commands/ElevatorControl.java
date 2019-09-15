@@ -2,7 +2,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 public class ElevatorControl extends Command {
   boolean direction;
@@ -31,6 +30,6 @@ public class ElevatorControl extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.cargoIntake.intakeOff();
+    Robot.climber.elevatorOff();
   }
 }
