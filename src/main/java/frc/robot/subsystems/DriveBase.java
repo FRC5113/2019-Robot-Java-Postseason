@@ -76,6 +76,6 @@ public class DriveBase extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new TeleopDriveNormal());
+    // This is set in robotInit for this subsystem.
   }
 }

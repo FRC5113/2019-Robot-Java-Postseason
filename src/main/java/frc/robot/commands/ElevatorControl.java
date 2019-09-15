@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ElevatorControl extends Command {
-  boolean direction;
+  private final boolean direction;
 
   /**
    * True for up, false for down.

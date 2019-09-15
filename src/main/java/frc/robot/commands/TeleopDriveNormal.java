@@ -1,11 +1,20 @@
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class TeleopDriveNormal extends Command {
-  public TeleopDriveNormal() {
+  private final DoubleSupplier x;
+  private final DoubleSupplier y;
+  private final DoubleSupplier z;
+
+  public TeleopDriveNormal(DoubleSupplier xSpeed, DoubleSupplier ySpeed, DoubleSupplier zSpeed) {
     requires(Robot.driveBase);
+    x = xSpeed;
+    y = ySpeed;
+    z = zSpeed;
   }
 
   // Called just before this Command runs the first time

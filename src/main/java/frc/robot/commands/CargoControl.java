@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class CargoControl extends Command {
-  boolean direction;
+  private final boolean direction;
 
   /**
    * True for intake, false for outtake.
