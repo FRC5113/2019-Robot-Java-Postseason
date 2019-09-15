@@ -26,7 +26,7 @@ public class TeleopDriveNormal extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.driveBase.driveCartesian(Robot.oi.getDriveX(), Robot.oi.getDriveY(), Robot.oi.getDriveZ());
+    Robot.driveBase.driveCartesian(x.getAsDouble(), y.getAsDouble(), z.getAsDouble());
   }
 
   // Make this return true when this Command no longer needs to run execute()
