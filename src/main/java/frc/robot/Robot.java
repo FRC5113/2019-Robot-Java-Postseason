@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.commands.SendToSmartDashboard;
-import frc.robot.commands.TeleopDriveNormal;
+import frc.robot.commands.DriveNormal;
 import frc.robot.subsystems.CargoIntake;
 import frc.robot.subsystems.Climber;
 import frc.robot.subsystems.DriveBase;
@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
     sendToSmartDashboard = new SendToSmartDashboard();
     sendToSmartDashboard.start();
 
-    driveBase.setDefaultCommand(new TeleopDriveNormal(() -> oi.getDriveX(), () -> oi.getDriveY(), () -> oi.getDriveZ()));
+    driveBase.setDefaultCommand(new DriveNormal(() -> oi.getDriveX(), () -> oi.getDriveY(), () -> oi.getDriveZ()));
 
     // chooser.setDefaultOption("Default Auto", new ExampleCommand()); //
     // chooser.addOption("My Auto", new MyAutoCommand());

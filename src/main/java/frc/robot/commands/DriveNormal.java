@@ -5,12 +5,12 @@ import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TeleopDriveNormal extends Command {
+public class DriveNormal extends Command {
   private final DoubleSupplier x;
   private final DoubleSupplier y;
   private final DoubleSupplier z;
 
-  public TeleopDriveNormal(DoubleSupplier xSpeed, DoubleSupplier ySpeed, DoubleSupplier zSpeed) {
+  public DriveNormal(DoubleSupplier xSpeed, DoubleSupplier ySpeed, DoubleSupplier zSpeed) {
     requires(Robot.driveBase);
     x = xSpeed;
     y = ySpeed;
