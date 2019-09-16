@@ -2,16 +2,18 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class TeleopReduceSpeed extends Command {
-  public TeleopReduceSpeed() {
+public class ReduceDriveSpeed extends Command {
+  private final double multiplier;
+
+  public ReduceDriveSpeed(double speed) {
+    multiplier = speed;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.driveBase.slowSpeed(RobotMap.slowSpeed);
+    Robot.driveBase.slowSpeed(multiplier);
   }
 
   // Make this return true when this Command no longer needs to run execute()

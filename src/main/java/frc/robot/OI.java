@@ -11,7 +11,7 @@ import frc.robot.commands.ToggleHatchPanelBar;
 import frc.robot.commands.ToggleHatchPanelClamp;
 import frc.robot.commands.CargoControl;
 import frc.robot.commands.ElevatorControl;
-import frc.robot.commands.TeleopReduceSpeed;
+import frc.robot.commands.ReduceDriveSpeed;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -44,7 +44,7 @@ public class OI {
     clampButton.whenPressed(new ToggleHatchPanelClamp());
     barButton.whenPressed(new ToggleHatchPanelBar());
     climbToggleButton.whenPressed(new ToggleClimbPistons());
-    driveSlowButton.toggleWhenPressed(new TeleopReduceSpeed());
+    driveSlowButton.toggleWhenPressed(new ReduceDriveSpeed(RobotMap.slowSpeed));
     cargoInButton.whileHeld(new CargoControl(true));
     cargoOutButton.whileHeld(new CargoControl(false));
     elevatorUpButton.whileHeld(new ElevatorControl(true));
