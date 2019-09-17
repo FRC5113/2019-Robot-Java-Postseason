@@ -32,6 +32,7 @@ public class TestAuton extends Command {
      * This is necessary because targets arent always located in a logical sort in the array
      * and it was easier do this than to actually follow heirarchy rules. ¯\_(ツ)_/¯
      */
+    // TODO: Check to see if this actually does anything.
     if (Robot.network.getContourInfo(DataType.x, 0) < Robot.network.getContourInfo(DataType.x, 1)) {
       target0Area = Robot.network.getContourInfo(DataType.area, 0);
       target1Area = Robot.network.getContourInfo(DataType.area, 1);
@@ -53,7 +54,7 @@ public class TestAuton extends Command {
   }
 
   private double autonPStrafeSpeedMath(double ratio) {
-    double threshold = .35; // NOTE: This is not the accuracy threshold, this is the RATIO threshold.
+    double threshold = .35; // NOTE: This is not the accuracy threshold, this is the RATIO threshold, basically the minimum expected value for the threshold.
     double maxSpeed = .6;
     double minSpeed = .25;
 
@@ -70,7 +71,7 @@ public class TestAuton extends Command {
     double strafingThreshold = .4;
 
     if (Robot.oi.getAutonForwardButton()) {
-      if (rotateSpeed > rotatingThreshold && strafeSpeed > strafingThreshold) {
+      if (rotateSpeed > rotatingThreshold && strafeSpeed > strafingThreshold) { // TODO: Check to see if this should be || or &&
         return movingDriveSpeed;
       } else {
         return driveSpeed;
@@ -91,14 +92,14 @@ public class TestAuton extends Command {
     }
 
     double speedDiff = maxSpeed - minSpeed;
-    double actualPosition = (Robot.network.getContourInfo(DataType.x, 0) + Robot.network.getContourInfo(DataType.x, 1)) / 2 - 480;
-    double scaledPosition = Math.pow((actualPosition) / 480, 2) * speedDiff;
-    if (Math.abs(actualPosition) < threshold) {
+    double position = (Robot.network.getContourInfo(DataType.x, 0) + Robot.network.getContourInfo(DataType.x, 1)) / 2 - 480;
+    double speed = Math.pow((position) / 480, 2) * speedDiff + minSpeed;
+    if (Math.abs(position) < threshold) {
       return 0;
-    } else if (actualPosition > 0) {
-      return scaledPosition + minSpeed;
+    } else if (position > 0) {
+      return speed;
     } else {
-      return -scaledPosition - minSpeed;
+      return -speed;
     }
   }
 
