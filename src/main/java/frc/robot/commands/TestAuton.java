@@ -54,7 +54,7 @@ public class TestAuton extends Command {
   }
 
   private double autonPStrafeSpeedMath(double ratio) {
-    double threshold = .35; // NOTE: This is not the accuracy threshold, this is the RATIO threshold, basically the minimum expected value for the threshold.
+    double threshold = .35; // NOTE: This is not the accuracy threshold, this is the RATIO threshold, basically the minimum expected value for the ratio.
     double maxSpeed = .6;
     double minSpeed = .25;
 
