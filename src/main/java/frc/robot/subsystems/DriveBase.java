@@ -25,7 +25,7 @@ public class DriveBase extends Subsystem {
     backLeftWheel.setNeutralMode(NeutralMode.Brake);
     backRightWheel.setNeutralMode(NeutralMode.Brake);
 
-    // Set the current limits for each wheel
+    // Sets the current limits for each wheel
     frontRightWheel.configPeakCurrentLimit(80);
     frontRightWheel.configPeakCurrentDuration(500);
     frontRightWheel.configContinuousCurrentLimit(60);
